@@ -7,8 +7,14 @@ fn main() {
             match envelop.message {
                 Message::Journal(entry) => {
                     match entry.event {
-                        fsdj @ Event::FsdJump { .. } => {
-                            dbg!(fsdj);
+                        Event::Location(e) => {
+                            dbg!(e);
+                        },
+                        Event::FsdJump(e) => {
+                            dbg!(e);
+                        },
+                        Event::Docked(e) => {
+                            dbg!(e);
                         },
                         _ => {},
                     }

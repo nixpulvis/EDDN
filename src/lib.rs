@@ -1,7 +1,7 @@
 use miniz_oxide::inflate;
 use serde::Deserialize;
 use chrono::prelude::*;
-use elite_journal::Entry;
+use elite_journal::{Entry, Event};
 
 // TODO: Error type.
 
@@ -33,7 +33,7 @@ pub struct Header {
 // TODO: Don't use untagged, we need to write a custom deserialized that uses the $schemaRef.
 #[serde(untagged)]
 pub enum Message {
-    Journal(Entry),
+    Journal(Entry<Event>),
     // TODO
     // Commodity,
     // Shipyard,
