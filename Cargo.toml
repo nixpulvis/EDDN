@@ -1,0 +1,13 @@
+[package]
+name = "eddn"
+version = "0.0.0-dev+initial"
+authors = ["Nathan Lilienthal <nathan@nixpulvis.com>"]
+edition = "2018"
+
+[dependencies]
+elite_journal = { path = "../elite-journal/" }
+serde = "*"
+serde_json = "*"
+chrono = "*"
+zmq = "0.9"
+miniz_oxide = "0.4"
