@@ -5,6 +5,8 @@ use elite_journal::{Entry, Event};
 
 // TODO: Error type.
 
+pub const URL: &'static str = "tcp://eddn.edcd.io:9500";
+
 /// Top level EDDN message wrapper
 #[derive(Debug, Deserialize)]
 pub struct Envelope {
