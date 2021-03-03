@@ -33,6 +33,8 @@ pub struct Header {
 /// Payload of the message containing the parsed data
 #[derive(Debug, Deserialize)]
 // TODO: Don't use untagged, we need to write a custom deserialized that uses the $schemaRef.
+// NOTE: [ "Docked", "FSDJump", "Scan", "Location", "SAASignalsFound", "CarrierJump" ]
+//       https://github.com/EDCD/EDDN/blob/d9b5586a4ef5a5c4c1117ec4105b773697b468ac/schemas/journal-v1.0.json#L43
 #[serde(untagged)]
 pub enum Message {
     Journal(Entry<Event>),
