@@ -1,4 +1,4 @@
-use elite_journal::Event;
+use elite_journal::entry::Event;
 use eddn::{URL, subscribe, Message};
 
 fn main() {

@@ -1,7 +1,7 @@
 use miniz_oxide::inflate;
 use serde::Deserialize;
 use chrono::prelude::*;
-use elite_journal::{Entry, Event};
+use elite_journal::entry::{Entry, Event};
 
 // TODO: Error type.
 
