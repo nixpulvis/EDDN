@@ -49,6 +49,7 @@ pub enum Message {
 }
 
 /// Subscribe to EDDN's ZMQ socket receiving all messages
+#[cfg(unix)]
 pub fn subscribe(url: &str) -> EnvelopeIterator {
     println!("Starting EDDN ZeroMQ consumer...");
 
@@ -68,10 +69,12 @@ pub fn subscribe(url: &str) -> EnvelopeIterator {
 }
 
 /// Decompress and parses each message from the ZMQ socket
+#[cfg(unix)]
 pub struct EnvelopeIterator {
     socket: zmq::Socket,
 }
 
+#[cfg(unix)]
 impl Iterator for EnvelopeIterator {
     type Item = Result<Envelope, serde_json::Error>;
 

@@ -11,5 +11,7 @@ elite_journal = { git = "https://github.com/ED-NEWP/elite_journal" }
 serde = "1.0"
 serde_json = "1.0"
 chrono = "0.4"
-zmq = "0.9"
 miniz_oxide = "0.4"
+
+[target.'cfg(unix)'.dependencies]
+zmq = "0.9"
