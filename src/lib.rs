@@ -87,4 +87,5 @@ impl Iterator for EnvelopeIterator {
     }
 }
 
-const SCHEMA_JOURNAL : &str = "https://eddn.edcd.io/schemas/journal/1";
+// TODO: Make use of the schema service
+// const SCHEMA_JOURNAL : &str = "https://eddn.edcd.io/schemas/journal/1";
