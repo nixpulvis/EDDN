@@ -1,7 +1,7 @@
-use miniz_oxide::inflate;
-use serde::Deserialize;
 use chrono::prelude::*;
 use elite_journal::entry::{Entry, Event};
+use miniz_oxide::inflate;
+use serde::Deserialize;
 
 // TODO: Error type.
 
@@ -29,7 +29,6 @@ pub struct Header {
     pub uploader_id: String,
 }
 
-
 /// Payload of the message containing the parsed data
 #[derive(Debug, Deserialize)]
 // TODO: Don't use untagged, we need to write a custom deserialized that uses the $schemaRef.
@@ -54,11 +53,9 @@ pub fn subscribe(url: &str) -> EnvelopeIterator {
     println!("Starting EDDN ZeroMQ consumer...");
 
     let ctx = zmq::Context::new();
-    let socket = ctx.socket(zmq::SUB)
-        .expect("failed to open socket");
+    let socket = ctx.socket(zmq::SUB).expect("failed to open socket");
 
-    socket.connect(url)
-        .expect("connection failed");
+    socket.connect(url).expect("connection failed");
     socket
         .set_subscribe(&vec![]) // Required to subscribe to everything
         .expect("failed to subscribe");
@@ -79,10 +76,8 @@ impl Iterator for EnvelopeIterator {
     type Item = Result<Envelope, serde_json::Error>;
 
     fn next(&mut self) -> Option<Self::Item> {
-        let compressed = self.socket.recv_bytes(0)
-            .expect("failed to receive bytes");
-        let json = inflate::decompress_to_vec_zlib(&compressed)
-            .expect("failed to decompress");
+        let compressed = self.socket.recv_bytes(0).expect("failed to receive bytes");
+        let json = inflate::decompress_to_vec_zlib(&compressed).expect("failed to decompress");
         Some(serde_json::from_slice(&json))
     }
 }
