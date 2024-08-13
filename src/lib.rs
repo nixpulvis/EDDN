@@ -1,5 +1,5 @@
 use chrono::prelude::*;
-use elite_journal::entry::{Entry, Event};
+use elite_journal::entry::{Entry, Event, Market};
 use miniz_oxide::inflate;
 use serde::Deserialize;
 
@@ -37,8 +37,8 @@ pub struct Header {
 #[serde(untagged)]
 pub enum Message {
     Journal(Entry<Event>),
+    Commodity(Entry<Market>),
     // TODO
-    // Commodity,
     // Shipyard,
     // Outfitting,
     // Blackmarket,
