@@ -10,7 +10,7 @@ To get started, add the following to your `Cargo.toml`:
 eddn = "*"
 ```
 
-An example live stream can be demonstrated with the `journal` example:
+An example live stream can be demonstrated with the `envelope` example:
 ```sh
-cargo run --example journal
+cargo run --example envelope
 ```
