@@ -73,8 +73,10 @@ impl Iterator for EnvelopeIterator {
     type Item = Result<Envelope, serde_json::Error>;
 
     fn next(&mut self) -> Option<Self::Item> {
-        let compressed = self.socket.recv_bytes(0).expect("failed to receive bytes");
-        let json = inflate::decompress_to_vec_zlib(&compressed).expect("failed to decompress");
+        let compressed =
+            self.socket.recv_bytes(0).expect("failed to receive bytes");
+        let json = inflate::decompress_to_vec_zlib(&compressed)
+            .expect("failed to decompress");
         Some(serde_json::from_slice(&json))
     }
 }
